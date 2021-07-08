@@ -5,6 +5,11 @@ name = "pypi"
 
 [packages]
 flask = "*"
+sqlalchemy = "*"
+flask-script = "*"
+flask-migrate = "*"
+psycopg2-binary = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 
