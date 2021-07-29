@@ -26,8 +26,11 @@ def login():
 def register():
     error = None
     if request.method == 'POST':
-        user = User(request.form['username'], request.form['password'], request.form['email'], 0,0,0)
+        user = User(str(request.form['username']), str(request.form['password']), str(request.form['email']))
         print(user.email)
+        
+        db.init_app(app)
+        db.create_all()
         db.session.add(user)
         db.session.commit()
         return render_template('test_reg.html', error=error)

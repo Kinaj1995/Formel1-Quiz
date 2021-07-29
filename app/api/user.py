@@ -127,3 +127,19 @@ def obj_permissions(obj, id):
             success = False
 
     return "a"
+
+@bp.route("/auth/register", methods=['GET', 'POST'])
+def register():
+    error = None
+    if request.method == 'POST':
+        user = User(str(request.form['username']), str(request.form['password']), str(request.form['email']))
+        print(user.email)
+        
+        db.init_app(app)
+        db.create_all()
+
+        db.session.add(user)
+        db.session.commit()
+        return render_template('test_reg.html', error=error)
+    else:
+        return render_template('test_reg.html', error=error)

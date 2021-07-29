@@ -22,13 +22,10 @@ class User(db.Model):
     false_answers = db.Column(db.Integer())
 
 
-    def __init__(self, username, password, email, points, number_of_questions, false_answers):
+    def __init__(self, username, password, email):
         self.username = username
         self.password = password
         self.email = email
-        self.points = points
-        self.number_of_question = number_of_questions
-        self.false_answers = false_answers
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
