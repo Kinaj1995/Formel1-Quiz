@@ -7,13 +7,14 @@
     
     
     {% block body %}
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='js/home.js')}}"></script>
     <main class="px-3 text-center" >
       <h1>Test your Formula 1 knowledge!</h1>
       <p class="lead">Compete against your friends and F1-Fans from around the world with this Quiz. Register or Login by using the buttons below to participate.</p>
       <p class="lead">
-        <a href="#Register" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Register</a>
-        <a href="#Login" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Login</a>
+        <a href="#Register" id="register" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Register</a>
+        <a href="#Login" id="login" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Login</a>
       </p>
     </main>    
                  
