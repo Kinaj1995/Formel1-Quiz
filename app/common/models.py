@@ -7,7 +7,7 @@ from sqlalchemy import Table
 from sqlalchemy.sql.schema import Column
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:Passwort@localhost/F1-Quiz"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:password@localhost/F1-Quiz"
 db = SQLAlchemy(app)
 
 class User(db.Model):

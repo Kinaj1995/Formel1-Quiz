@@ -25,6 +25,17 @@ body {
   max-width: 40em;
 }
 
+.tyre {
+  width: 100px;
+  height: 100px;
+  margin-top: 3rem;
+  margin-left: 2rem;
+}
+
+.tyre:hover {
+  transform: rotateZ(360deg);
+  transition: transform 2s ease-in-out, opacity 0.5s ease-in-out, margin-left 2s ease-in-out;
+}
 
 /*
  * Header
