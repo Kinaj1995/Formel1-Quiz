@@ -5,9 +5,9 @@ from sqlalchemy import ForeignKey
 from sqlalchemy import String, Integer
 from sqlalchemy import Table
 from sqlalchemy.sql.schema import Column
+from app import app
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:password@localhost/F1-Quiz"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:Passwort@localhost/F1-Quiz"
 db = SQLAlchemy(app)
 
 class User(db.Model):
@@ -71,7 +71,7 @@ class Questions(db.Model):
         self.picture = picture
 
     def __repr__(self):
-        return '<id {}>'.format(self.id)
+        return '<id {}, question {}>'.format(self.id, self.question)
 
 
 question_answer = Table('question_answer', db.Model.metadata,
