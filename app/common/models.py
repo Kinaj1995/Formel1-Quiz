@@ -48,7 +48,11 @@ class answers(db.Model):
     __tablename__ = 'answers'
 
     id = db.Column(db.Integer(), primary_key=True)
-    answers = db.Column(JSON, nullable=False)
+    option1 = db.Column(db.String(), nullable=False)
+    option2 = db.Column(db.String(), nullable=False)
+    option3 = db.Column(db.String(), nullable=False)
+    option4 = db.Column(db.String(), nullable=False)
+    correct = db.Column(db.Integer(), nullable=False)
 
     def __init__(self, answers):
         self.answers = answers

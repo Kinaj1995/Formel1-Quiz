@@ -9,10 +9,10 @@ from sqlalchemy.ext.declarative import declarative_base
 app = Flask(__name__)
 db = SQLAlchemy()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/F1-Quiz'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Passwort@localhost/F1-Quiz'
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 
-engine = create_engine('postgresql://postgres:password@localhost/F1-Quiz')
+engine = create_engine('postgresql://postgres:Passwort@localhost/F1-Quiz')
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
