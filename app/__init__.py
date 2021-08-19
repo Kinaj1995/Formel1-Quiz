@@ -28,6 +28,9 @@ app.register_blueprint(home_bp, url_prefix='/')
 from .test import bp as test_bp
 app.register_blueprint(test_bp, url_prefix='/test')
 
+from .quiz import bp as quiz_bp
+app.register_blueprint(quiz_bp, url_prefix='/quiz') 
+
 @app.route('/')
 def index():
     return redirect(url_for('home.index'))
