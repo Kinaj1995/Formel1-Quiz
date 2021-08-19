@@ -28,7 +28,7 @@ from app.common.models import User, Questions, answers
 from . import bp
 from  sqlalchemy.sql.expression import func
 
-@bp.route('/quiz/question/<diff_id>', methods=('GET', 'POST'))
+@bp.route('/question/<diff_id>', methods=('GET', 'POST'))
 def quiz_api_question(diff_id):
     if request.method == 'POST':
         ans=request.form.get('answer')
@@ -39,5 +39,9 @@ def quiz_api_question(diff_id):
         Questions.query.get(1)
         question = Questions.query.filter(Questions.difficultyid == diff_id).order_by(func.random()).first()
         anwser = answers.query.filter(answers.id == question.id).first()
-        return render_template("quiz_proto.html",question=question.question, anwser=anwser)  
+        return render_template("quiz_proto.html",question=question.question, anwser=anwser, correct=anwser.correct)  
      
+@bp.route('/question/next', methods=('GET', 'POST'))
+def quiz_next():
+
+    return render_template("home.html") 

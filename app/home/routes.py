@@ -8,9 +8,6 @@ from . import bp
 def index():
     return render_template("home.html")
 
-@bp.route('/quiz')
-def quiz():
-    return render_template("quiz.html")
 
 @bp.route('/leaderboard')
 def leaderboard():
