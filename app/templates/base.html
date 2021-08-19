@@ -13,10 +13,9 @@
     
         <!-- Favicons -->
         <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAACxSagAAAAAALJJqAC1UK0AkDqBAPn5+QCiQZYAizZ8AK5IowCMNnwAsn6oALRLqwCVRIYAkkuDAJ1SkAC5YLIAtlmtAJM8hACDMXIAmj+MAKxGoQC2Ta4AsE2mALFNpgCWTYYAtVCuAIczdQCtS6QAkj2CAI05fQCqSp8AiTh4AKxGogCmRpoAvWK2AK1JogC3UK8AqEWdAIYzdgCHM3YAkjqDAI82fgC1S60AgjJxALVdrACkVpcAjTl+ALxgtACmQ5sAjjx+AIQ0dACcP44A/v7+AJ1QkACIM3cAqEieAI06fACzT6sAkj2EALRPqwCobJwArkumAIMycgCjXZUAizV6AKFDlACzSqkAkTiCALZRrgCVP4cAmDuKALNNqQCGN3UAhzd1AKpFnwCqV54AkzqFAJQ6hQCwSKcAsFqmALRPrAC1T6wAgzJzAJs9jQCUPYUAhDJzAKFDlQCQPIAAt1GvAKhGnQC5X7EAo1SXAK9JpQCYPosAhzd2AI83fgCIN3YAtkytAIk2eQCLOXkAsU6oALdRsAC4UbAAqUaeAJM7hACwSaYAiDd3AJo+jAC2TK4AlEyGAJlBjACJNnoAvWG1AIYydQCLOXoA////ALJOqQC1SqwAuFGxAI04fQCfP5IAo0aXAI07fQD9/f0AokGVAJ1AkACjZJYAs06qAJhOigD7+/sAnEOQAKRDmACDMXEAm0qNAI07fgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAQEBAQEBAQEBbYA1W0tPLFpwIi8PAQEBK1JxQENGeDAgAipsYUIBATI+hBopTVN8JRQAdRVhAQFvJhKCczR7e3MfCE4LFQEBBAcngnM/DIWCNB9KaQsBAV0oCYJzGFU2X3MfBmdcAQFBM0yCcwp+PII0a2t8WQEBN4N9gnOBBQVzH3doE1YBAT0jIYJzDh1ignMxLlRuAQF/RxuCcy0Reg1zHx+GOgEBGSQ5gnNzNDRzHx9JHzgBAVB2ZRAQEBAQEBxjXklqAQFkJHZmURceeYJFV3JgSAEBAXQDWEQ7Fh55gkVXcgEBAQEBAQEBAQEBAQEBAQEBAf//AADAAwAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAwAMAAP//AAA=" rel="icon" type="image/x-icon" />    
-          
-        <!-- Custom styles for this template -->
-        <link href="static//css//cover.css" rel="stylesheet">
 
+        <!-- Custom styles for this template -->
+        <link href="{{url_for('static', filename='css/cover.css')}}" rel="stylesheet">
         {% block head %} 
         {% endblock %}
       </head>
@@ -24,6 +23,8 @@
       <body class="d-flex h-100 text-dark bg-white">
 
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+          <!--Navbar-->
           <header class="mb-auto bg-dark">
             <div>
               <img class="bd-placeholder-img" src="static/img/Logo_light.png">
@@ -32,8 +33,10 @@
                 <a class="nav-link" href="/quiz">Quiz</a>
                 <a class="nav-link" href="/leaderboard">Leaderboard</a>
               </nav>
-            </div>
-          </header>      
+            </div> 
+          </header>
+          <!--End Navbar-->
+          
 
         {% block body %} 
         {% endblock %}
@@ -41,7 +44,13 @@
           <footer class="mt-auto text-center text-white-50">
             <p>"© F1-Quiz-Duel. All Rights Reserved. created by Yannik & Janik"</p>
           </footer>
-
         </div> 
+
         </body>
+
+
+
+
+
+
 </html>

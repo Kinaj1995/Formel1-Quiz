@@ -26,8 +26,8 @@ body {
 }
 
 .tyre {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   margin-top: 3rem;
   margin-left: 2rem;
 }
@@ -67,4 +67,12 @@ body {
   font-size: 1.125rem;
   width: 40%;
   user-select: none;
+}
+
+.correct {
+  background-color: green;
+}
+
+.wrong {
+  background-color: red;
 }
