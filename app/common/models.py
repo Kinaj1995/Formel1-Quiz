@@ -75,7 +75,7 @@ class Questions(db.Model):
         self.picture = picture
 
     def __repr__(self):
-        return '<id {}, question {}>'.format(self.id, self.question)
+        return '<id {}, question {}, picture {}>'.format(self.id, self.question, self.picture)
 
 
 question_answer = Table('question_answer', db.Model.metadata,

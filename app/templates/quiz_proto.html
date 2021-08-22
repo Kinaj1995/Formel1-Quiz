@@ -11,14 +11,16 @@
     <script src="{{url_for('static', filename='js/quiz.js')}}"></script>
     <main class="px-3 text-center" >
       <h1>Quiz</h1>
-      <form method="POST" action="">
+      <form method="POST" action="{{url_for('quiz.quiz_next')}}">
         <div class="qst">{{question}}</div>
-            <div class="opt"><button name="answer" value="1" class="{{ 'c' if correct == 1 else 'w' }} optbtn"> {{anwser.option1}}</button></div>
-            <div class="opt"><button name="answer" value="2" class="{{ 'c' if correct == 2 else 'w' }} optbtn"> {{anwser.option2}}</button></div>
-            <div class="opt"><button name="answer" value="3" class="{{ 'c' if correct == 3 else 'w' }} optbtn"> {{anwser.option3}}</button></div>
-            <div class="opt"><button name="answer" value="4" class="{{ 'c' if correct == 4 else 'w' }} optbtn"> {{anwser.option4}}</button></div>
+          <img src='data:;base64,{{picture}}' alt="no image display" style="width:500px;height:600px;" >
 
-            <div class="opt"><button id="next">next</button></div>
+          <div class="opt"><button name="answer" value="1" class="{{ 'c' if correct == 1 else 'w' }} optbtn"> {{anwser.option1}}</button></div>
+          <div class="opt"><button name="answer" value="2" class="{{ 'c' if correct == 2 else 'w' }} optbtn"> {{anwser.option2}}</button></div>
+          <div class="opt"><button name="answer" value="3" class="{{ 'c' if correct == 3 else 'w' }} optbtn"> {{anwser.option3}}</button></div>
+          <div class="opt"><button name="answer" value="4" class="{{ 'c' if correct == 4 else 'w' }} optbtn"> {{anwser.option4}}</button></div>
+            
+          <div class="opt"><button id="next" type="submit">next</button></div>
       </form>
     </main>    
                  

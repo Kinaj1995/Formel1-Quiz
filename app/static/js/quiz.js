@@ -21,16 +21,6 @@ $(function() {
     });
 });
 
-$(function() {
-    $('#next').on('click', function(e) {
-        e.preventDefault()
-        $.post('/quiz/question/next',
-        function(data) {
-      //do nothing
-    });
-    return false;
-    });
-});
 
 function lookbtn(){
     

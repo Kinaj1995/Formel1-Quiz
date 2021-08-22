@@ -39,9 +39,16 @@ def quiz_api_question(diff_id):
         Questions.query.get(1)
         question = Questions.query.filter(Questions.difficultyid == diff_id).order_by(func.random()).first()
         anwser = answers.query.filter(answers.id == question.id).first()
-        return render_template("quiz_proto.html",question=question.question, anwser=anwser, correct=anwser.correct)  
+        import base64
+        img_bi = question.picture
+        encoded_img = base64.b64encode(img_bi)
+        a = encoded_img.decode()
+
+        return render_template("quiz_proto.html",question=question.question, anwser=anwser, correct=anwser.correct, picture=a)  
      
 @bp.route('/question/next', methods=('GET', 'POST'))
 def quiz_next():
-
+    #add stats to user
+    a = request.form.get("difficulty")
+    print(a)
     return render_template("home.html") 
