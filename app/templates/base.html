@@ -27,15 +27,15 @@
         {% endblock %}
       </head>
 
-      <body class="d-flex h-100 text-dark bg-white">
+      <body class="text-center">
 
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <div class="cover-container d-flex h-100 mx-auto flex-column">
 
           <!--Navbar-->
-          <header class="mb-auto bg-dark">
-            <div>
+          <header class="masthead mb-auto">
+            <div class="inner">
               <img class="bd-placeholder-img" src="static/img/Logo_light.png">
-              <nav class="nav nav-masthead justify-content-center float-md-end">
+              <nav class="nav nav-masthead justify-content-center">
                 <a class="nav-link active" href="/home">Home</a>
                 <a class="nav-link" href="/quiz">Quiz</a>
                 <a class="nav-link" href="/leaderboard">Leaderboard</a>
@@ -48,8 +48,10 @@
         {% block body %} 
         {% endblock %}
         
-          <footer class="mt-auto text-center text-white-50">
+          <footer class="mastfoot mt-auto">
+            <div class="inner">
             <p>"© F1-Quiz-Duel. All Rights Reserved. created by Yannik & Janik"</p>
+            </div>
           </footer>
         </div> 
 

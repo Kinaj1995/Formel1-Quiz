@@ -7,8 +7,3 @@ from . import bp
 @bp.route('/home')
 def index():
     return render_template("home.html")
-
-
-@bp.route('/leaderboard')
-def leaderboard():
-    return render_template("leaderboard.html")
