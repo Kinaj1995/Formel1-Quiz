@@ -29,7 +29,10 @@ from .test import bp as test_bp
 app.register_blueprint(test_bp, url_prefix='/test')
 
 from .quiz import bp as quiz_bp
-app.register_blueprint(quiz_bp, url_prefix='/quiz') 
+app.register_blueprint(quiz_bp, url_prefix='/quiz')
+
+from .leaderboard import bp as leaderboard_bp
+app.register_blueprint(leaderboard_bp, url_prefix='/leaderboard') 
 
 @app.route('/')
 def index():
