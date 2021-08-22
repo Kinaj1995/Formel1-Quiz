@@ -4,13 +4,15 @@ from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy import ForeignKey
 from sqlalchemy import String, Integer
 from sqlalchemy import Table
+from sqlalchemy.sql.expression import null
 from sqlalchemy.sql.schema import Column
+from flask_login import UserMixin
 from app import app
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:Passwort@localhost/F1-Quiz"
 db = SQLAlchemy(app)
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -29,6 +31,15 @@ class User(db.Model):
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
+        
+    @classmethod
+    def find(cls, user_name):
+        user = User.query.filter_by(username=user_name).first()
+
+        if not user:
+            return null
+        
+        return user
 
 class Difficulty(db.Model):
     __tablename__ = 'difficulty'
