@@ -141,7 +141,7 @@ def obj_permissions(obj, id):
 def register():
     error = None
     if request.method == 'POST':
-        user = User(str(request.form['username']), str(request.form['password']), str(request.form['email']))
+        user = User(str(request.form['username']), str(request.form['password']), str(request.form['email']), 0, 0, 0)
         print(user.email)
         
         db.init_app(app)
