@@ -1,5 +1,6 @@
 from flask import Flask
 from flask.helpers import url_for
+from flask_login import LoginManager
 from werkzeug.utils import redirect
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
@@ -7,8 +8,11 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__)
+app.secret_key = '1212121212121221'
 db = SQLAlchemy()
-
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = '/'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Passwort@localhost/F1-Quiz'
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 

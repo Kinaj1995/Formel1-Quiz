@@ -1,4 +1,6 @@
 
+from re import L
+import re
 from flask import request, jsonify, current_app as app
 import enum
 import os
@@ -20,31 +22,38 @@ from sqlalchemy import Integer, String, UnicodeText, DateTime, Boolean, Unicode
 from sqlalchemy import Table, Column, UniqueConstraint, or_
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql.functions import user
 from sqlalchemy_utils import generic_relationship
 from werkzeug.exceptions import Aborter
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from app import db
+from app import db, login_manager
 from app.common.models import User
 from . import bp
 
 
-@bp.route('/auth/login', methods=('POST',))
-def api_login():
-    user = User.find(request.json.get('username', ''))
-    if not user or not user.active or not user.check_password(request.json.get('password', '')):
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+@bp.route('/auth/login', methods=('POST', 'GET'))
+def login():
+    username = request.form['user']
+    print(request.form)
+    pw = request.form['password']
+    user = User.find(username)
+
+    if user.password == pw:
+        login_user(user)
+
+        return redirect(url_for('quiz.quiz_next'))
+
+    else:
         return jsonify(success=False), 401
-    login_user(user, remember=request.json.get('remember', False))
-    identity_changed.send(current_app._get_current_object(), identity=Identity(user.id))
-    return jsonify({
-        'id': current_user.id,
-        'username': current_user.name,
-        'name': current_user.display_name,
-        'email': current_user.email,
-        'local': current_user.local,
-        'active': current_user.active,
-        'roles': [role.name for role in current_user.roles]
-    })
+    
+    
 
 
 @bp.route('/auth/logout', methods=('POST',))
@@ -140,6 +149,6 @@ def register():
 
         db.session.add(user)
         db.session.commit()
-        return render_template('test_reg.html', error=error)
+        return render_template('home.html', error=error)
     else:
-        return render_template('test_reg.html', error=error)
+        return render_template('home.html', error=error)
