@@ -13,13 +13,13 @@
       <br>
       <br>
       <p class="lead">Choose a difficulty for your very own Quiz!</p>
-        <a href="/">
+        <a href="{{url_for('quiz.quiz_api_question',diff_id=1)}}">
             <img class="tyre" src="{{url_for('static', filename='img/tyre-soft.png')}}">
         </a>  
-        <a href="/">
+        <a href="{{url_for('quiz.quiz_api_question',diff_id=2)}}">
           <img class="tyre" src="{{url_for('static', filename='img/tyre-medium.png')}}">
       </a> 
-      <a href="/">
+      <a href="{{url_for('quiz.quiz_api_question',diff_id=3)}}">
         <img class="tyre" src="{{url_for('static', filename='img/tyre-hard.png')}}">
     </a> 
 

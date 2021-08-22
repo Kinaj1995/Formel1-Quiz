@@ -17,12 +17,12 @@
       <br>
       <br>
       <p class="lead">
-        <!--  if !current_user.is_authenticated  -->
+        {% if current_user.is_authenticated %}
             <button type="button" class="btn btn-lg btn-secondary fw-bold" data-toggle="modal" data-target="#loginModal">Logout</button>
-        <!--  else  -->
+            {% else %}
             <button type="button" class="btn btn-lg btn-secondary fw-bold" data-toggle="modal" data-target="#addUser">Register</button>
             <button type="button" class="btn btn-lg btn-secondary fw-bold" data-toggle="modal" data-target="#loginModal">Login</button>
-        <!--  endif  -->
+            {% endif %}
       </p>
     </main>    
   
