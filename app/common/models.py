@@ -24,10 +24,13 @@ class User(UserMixin, db.Model):
     false_answers = db.Column(db.Integer())
 
 
-    def __init__(self, username, password, email):
+    def __init__(self, username, password, email, points, noq, fa):
         self.username = username
         self.password = password
         self.email = email
+        self.points = points
+        self.number_of_question = noq
+        self.false_answers = fa
 
     def __repr__(self):
         return '<id {}>'.format(self.id)
