@@ -27,14 +27,14 @@
         {% endblock %}
       </head>
 
-      <body class="text-center">
+      <body>
 
         <div class="cover-container d-flex h-100 mx-auto flex-column">
 
           <!--Navbar-->
           <header class="masthead mb-auto">
             <div class="inner">
-              <img class="bd-placeholder-img" src="static/img/Logo_light.png">
+              <img class="bd-placeholder-img" src="{{url_for('static', filename='img/Logo_light.png')}}">
               <nav class="nav nav-masthead justify-content-center">
                 <a class="nav-link active" href="/home">Home</a>
                 <a class="nav-link" href="/quiz">Quiz</a>
@@ -48,7 +48,7 @@
         {% block body %} 
         {% endblock %}
         
-          <footer class="mastfoot mt-auto">
+          <footer class="mastfoot mt-auto text-center">
             <div class="inner">
             <p>"© F1-Quiz-Duel. All Rights Reserved. created by Yannik & Janik"</p>
             </div>
