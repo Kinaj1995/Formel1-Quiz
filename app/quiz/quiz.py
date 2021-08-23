@@ -28,31 +28,32 @@ from app.common.models import Difficulty, User, Questions, answers
 from . import bp
 from  sqlalchemy.sql.expression import func
 
-@bp.route('/question/<diff_id>', methods=('GET', 'POST'))
+@bp.route('/question/<diff_id>')
 def quiz_api_question(diff_id):
-    if request.method == 'POST':
-        ans=request.form.get('answer')
-        print(ans)
-        
-        return render_template("home.html")
-    else:
-        Questions.query.get(1)
-        question = Questions.query.filter(Questions.difficultyid == diff_id).order_by(func.random()).first()
-        anwser = answers.query.filter(answers.id == question.id).first()
-        import base64
-        img_bi = question.picture
-        encoded_img = base64.b64encode(img_bi)
-        a = encoded_img.decode()
+    Questions.query.get(1)
+    question = Questions.query.filter(Questions.difficultyid == diff_id).order_by(func.random()).first()
+    anwser = answers.query.filter(answers.id == question.id).first()
+    import base64
+    img_bi = question.picture
+    encoded_img = base64.b64encode(img_bi)
+    a = encoded_img.decode()
 
-        return render_template("quiz_proto.html",question=question, anwser=anwser, correct=anwser.correct, picture=a, diff=diff_id)  
+    return render_template("quiz_proto.html",question=question, anwser=anwser, correct=anwser.correct, picture=a, diff=diff_id)  
      
-@bp.route('/question/next', methods=('GET', 'POST'))
+@bp.route('/question/next/', methods=('GET', 'POST'))
 def quiz_next():
+    res = request.json
+
     user = User.query.filter(User.id == current_user.id).first()
     user.number_of_question += 1
-    diff_id = request.form['next']
+    if res["Correct"]:
+        diff_id = res['Diff_id']
+
+        diff = Difficulty.query.filter(Difficulty.id == diff_id).first()
+        user.points += diff.points
+        db.session.commit()   
+    else:
+        user.false_answers += 1
+        db.session.commit()
     
-    diff = Difficulty.query.filter(Difficulty.id == diff_id).first()
-    user.points += diff.points
-    db.session.commit()
-    return render_template("home.html") 
+    return render_template("home.html")
