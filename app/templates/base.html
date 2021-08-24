@@ -2,75 +2,60 @@
 <html lang="en" class="h-100">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Janik Schilter">
-  <title>F1-Quiz-Duel</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Janik Schilter">
+    <title>F1-Quiz-Duel</title>
 
 
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <!-- Bootstrap Javascript -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+    <!-- Bootstrap Javascript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <!-- Favicons -->
-  <script src="{{url_for('static', filename='js/feather.min.js')}}"></script>
+    <!-- Favicons -->
+    <script src="{{url_for('static', filename='js/feather.min.js')}}"></script>
 
 
-  <!-- Custom styles for this template -->
-  <link href="{{url_for('static', filename='css/cover.css')}}" rel="stylesheet">
-  <link href="{{url_for('static', filename='css/jquery.quiz-min.css')}}" rel="stylesheet">
-  <script src="{{url_for('static', filename='js/jquery.quiz-min.js')}}"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-    crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename='css/cover.css')}}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 
-  
 
-  {% block head %}
-  {% endblock %}
+
+    {% block head %} {% endblock %}
 </head>
 
 <body>
 
-  <div class="cover-container d-flex h-100 mx-auto flex-column">
+    <div class="cover-container d-flex h-100 mx-auto flex-column">
 
-    <!--Navbar-->
-    <header class="masthead mb-auto">
-      <div class="inner">
-        <img class="bd-placeholder-img" src="{{url_for('static', filename='img/Logo_light.png')}}">
-        <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link active" href="/home">Home</a>
-          {% if current_user.is_authenticated %}
-          <a class="nav-link" href="/quiz">Quiz</a>
-          <a class="nav-link" href="/leaderboard">Leaderboard</a>
-          {% endif %}
-        </nav>
-      </div>
-    </header>
-    <!--End Navbar-->
+        <!--Navbar-->
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <img class="bd-placeholder-img" src="{{url_for('static', filename='img/Logo_light.png')}}">
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link active" href="/home">Home</a> {% if current_user.is_authenticated %}
+                    <a class="nav-link" href="/quiz">Quiz</a>
+                    <a class="nav-link" href="/leaderboard">Leaderboard</a> {% endif %}
+                </nav>
+            </div>
+        </header>
+        <!--End Navbar-->
 
 
-    {% block body %}
-    {% endblock %}
+        {% block body %} {% endblock %}
 
-    <footer class="mastfoot mt-auto text-center">
-      <div class="inner">
-        <p>"© F1-Quiz-Duel. All Rights Reserved. created by Yannik & Janik"</p>
-      </div>
-    </footer>
-  </div>
+        <footer class="mastfoot mt-auto text-center">
+            <div class="inner">
+                <p>"© F1-Quiz-Duel. All Rights Reserved. created by Yannik & Janik"</p>
+            </div>
+        </footer>
+    </div>
 
 </body>
 
