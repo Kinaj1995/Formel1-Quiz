@@ -52,8 +52,8 @@ def quiz_next():
         diff = Difficulty.query.filter(Difficulty.id == diff_id).first()
         user.points += diff.points
         db.session.commit()   
-    else:
+    else: 
         user.false_answers += 1
         db.session.commit()
     
-    return render_template("home.html")
+    return redirect(url_for('quiz.quiz_api_question', diff_id=diff_id))

@@ -28,27 +28,20 @@
         </tr>
       </thead>
       <tbody>
+        {% for user in users %}
         <tr>
-          <th scope="row">1</th>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{user.username}}</td>
+          <td>{{user.points}}</td>
+          <td>{{user.number_of_question}}</td>
+          {% if user.number_of_question == 0 %}
+          <td>0</td>
+          {% else %}
+          <td>{{user.points/user.number_of_question}}</td>
+          {% endif %}
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-        </tr>
+        {% endfor %}
+       
       </tbody>
     </table>
 
