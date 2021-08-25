@@ -44,6 +44,7 @@
         <div id="quiz-start-screen" style="display: none;">
             <p><a href="#" id="quiz-start-btn" class="quiz-button">Start</a></p>
         </div>
+        <form id="quiz">
         <div id="questions">
             <div class="question-container active-question" style="display: block;">
                 <img src='data:;base64,{{picture}}' alt="no image display" style="width:500px;height:333px;">
@@ -62,14 +63,15 @@
                 </ul>
             </div>  
         </div>
-        
+      
         <div id="quiz-controls" style="display: block;">
             <div id="quiz-buttons"><a href="#" id="quiz-next-btn">Next Question</a></div>
 
-            <div id="quiz-buttons"><button id="quiz-next-btn" type="submit" name="next" value="{{ diff }}">Next Question</button></div>
+            <div id="quiz-buttons"><button id="quiz-next-btn" name="next">Next Question</button></div>
 
 
         </div>
+        </form>
     </div>
 </div>
 
