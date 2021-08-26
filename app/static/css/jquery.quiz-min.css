@@ -37,10 +37,10 @@
 }
 
 .answers a.incorrect, .answers button.incorrect {
-    background: #c00
+    background: #e116;
 }
 
-#quiz-buttons button, #quiz-div button, #quiz-controls, .quiz-container .quiz-button {
+#quiz-buttons a, #quiz-div button, #quiz-controls, .quiz-container .quiz-button {
     padding: .5em 1em;
     background: #333;
     color: #fff;

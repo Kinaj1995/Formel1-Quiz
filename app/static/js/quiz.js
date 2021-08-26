@@ -15,7 +15,7 @@ $(function() {
 $(function() {
     $('.w').on('click', function(e) {
         e.preventDefault()
-        $(this).toggleClass("wrong")
+        $(this).toggleClass("incorrect")
         anwsered = true
         lookbtn()
         return false;
