@@ -40,7 +40,7 @@
     background: #e116;
 }
 
-#quiz-buttons a, #quiz-div button, #quiz-controls, .quiz-container .quiz-button {
+#quiz-buttons button, #quiz-div button, #quiz-controls, .quiz-container .quiz-button {
     padding: .5em 1em;
     background: #333;
     color: #fff;
