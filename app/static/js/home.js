@@ -8,3 +8,17 @@ $(function() {
     return false;
   });
 });
+
+$(function(){  
+  $("#logout").on('click', function(e) {
+    e.preventDefault()
+    $.ajax({
+      url:'/api/auth/logout', 
+      type:'POST',
+      success: function (res){
+          document.write(res)
+      }
+    })
+
+  });
+});
