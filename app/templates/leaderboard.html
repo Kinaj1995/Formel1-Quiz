@@ -38,7 +38,8 @@
           {% if user.number_of_question == 0 %}
           <td>0</td>
           {% else %}
-          <td>{{user.points/user.number_of_question}}</td>
+          {% set avg = user.points/user.number_of_question%}
+          <td>{{'%0.2f'| format(avg|float)}}</td>
           {% endif %}
         </tr>
         {% endfor %}

@@ -40,19 +40,20 @@ def load_user(user_id):
 
 @bp.route('/auth/login', methods=('POST', 'GET'))
 def login():
-    username = request.form['user']
-    print(request.form)
-    pw = request.form['password']
-    user = User.find(username)
+    try:
+        username = request.form['user']
+        print(request.form)
+        pw = request.form['password']
+        user = User.find(username)
 
-    if user.password == pw:
-        login_user(user)
+        if user.password == pw:
+            login_user(user)
 
-        return redirect(url_for('home'))
-
-    else:
-        return jsonify(success=False), 401
-    
+            return redirect(url_for('home'))
+        else:
+            return render_template('exception.html')
+    except:
+        return render_template('exception.html')
     
 
 
