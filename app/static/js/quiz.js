@@ -37,7 +37,7 @@ $(function() {
     var segment_array = segment_str.split( '/' );
     var last_segment = segment_array.pop();
 
-    $('#next').on('click', function(e) {
+    $('#quiz-buttons').on('click', function(e) {
         var form = $('#quiz')
         
         $.ajax({
