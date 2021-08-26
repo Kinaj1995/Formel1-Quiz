@@ -7,32 +7,7 @@
 
 
 {% block body %}
-<!--
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="{{url_for('static', filename='js/quiz.js')}}"></script>
-<main class="px-3 text-center">
-  <h1>Quiz</h1>
-  <br>
-  <form method="POST" action="{{url_for('quiz.quiz_next')}}">
-    <img src='data:;base64,{{picture}}' alt="no image display" style="width:600px;height:400px;">
-    <div class="qst" name="question" value="{{question.id}}">{{question.question}}</div>
 
-    <ul class="answers">
-      <div class="opt"><button name="answer" value="1" class="{{ 'c' if correct == 1 else 'w' }} optbtn">
-          {{anwser.option1}}</button></div>
-      <div class="opt"><button name="answer" value="2" class="{{ 'c' if correct == 2 else 'w' }} optbtn">
-          {{anwser.option2}}</button></div>
-      <div class="opt"><button name="answer" value="3" class="{{ 'c' if correct == 3 else 'w' }} optbtn">
-          {{anwser.option3}}</button></div>
-      <div class="opt"><button name="answer" value="4" class="{{ 'c' if correct == 4 else 'w' }} optbtn">
-          {{anwser.option4}}</button></div>
-    </ul>
-
-
-    <div class="opt"><button id="next" type="submit" name="next" value="{{ diff }}">next</button></div>
-  </form>
-</main>
--->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="{{url_for('static', filename='js/quiz.js')}}"></script>
@@ -40,7 +15,7 @@
 <div class="container">
     <div id="quiz" class="quiz-container quiz-questions-state">
         <div id="quiz-header">
-            <h1>Quiz</h1>
+            <h2>Quiz</h2>
         </div>
         <div id="quiz-start-screen" style="display: none;">
             <p><a href="#" id="quiz-start-btn" class="quiz-button">Start</a></p>
@@ -48,7 +23,7 @@
         <form id="quiz">
         <div id="questions">
             <div class="question-container active-question" style="display: block;">
-                <img src='data:;base64,{{picture}}' alt="no image display" style="width:500px;height:333px;">
+                <img src='data:;base64,{{picture}}' class="quiz-img" alt="no image display">
                 <p></p>
                 <div class="qst" name="question" value="{{question.id}}">{{question.question}}</div>
                 <br>
