@@ -48,7 +48,7 @@ def login():
     if user.password == pw:
         login_user(user)
 
-        return redirect(url_for('quiz.quiz_next'))
+        return redirect(url_for('home'))
 
     else:
         return jsonify(success=False), 401
