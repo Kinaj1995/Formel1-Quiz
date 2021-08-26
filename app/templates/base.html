@@ -35,13 +35,18 @@
     <div class="cover-container d-flex h-100 mx-auto flex-column">
 
         <!--Navbar-->
-        <header class="masthead mb-auto">
+        <header class="masthead mb-auto" id="navigation">
             <div class="inner">
                 <img class="bd-placeholder-img" src="{{url_for('static', filename='img/Logo_light.png')}}">
                 <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link active" href="/home">Home</a> {% if current_user.is_authenticated %}
-                    <a class="nav-link" href="/quiz">Quiz</a>
-                    <a class="nav-link" href="/leaderboard">Leaderboard</a> {% endif %}
+                    <a class="{{ 'nav-link active' if active_page == 'home' else 'nav-link' }}" 
+                        href="/home">Home</a> 
+                    {% if current_user.is_authenticated %}
+                    <a class="{{ 'nav-link active' if active_page == 'quiz' or active_page == 'quiz_proto' else 'nav-link' }}" 
+                        href="/quiz">Quiz</a>
+                    <a class="{{ 'nav-link active' if active_page == 'leaderboard' else 'nav-link' }}" 
+                        href="/leaderboard">Leaderboard</a> 
+                    {% endif %}
                 </nav>
             </div>
         </header>
