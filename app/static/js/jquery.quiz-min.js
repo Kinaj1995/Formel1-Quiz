@@ -17,7 +17,7 @@
             q = 0,
             r = !1;
         e.methods = {
-            init: function() { e.methods.setup(), a(c).on("click", i, function(a) { a.preventDefault(), e.methods.start() }), a(c).on("click", j, function(a) { a.preventDefault(), e.methods.home() }), a(c).on("click", ".answers a", function(a) { a.preventDefault(), e.methods.answerQuestion(this) }), a(c).on("click", "#quiz-next-btn", function(a) { a.preventDefault(), e.methods.nextQuestion() }), a(c).on("click", "#quiz-finish-btn", function(a) { a.preventDefault(), e.methods.finish() }), a(c).on("click", "#quiz-restart-btn, #quiz-retry-btn", function(a) { a.preventDefault(), e.methods.restart() }) },
+            init: function() { e.methods.setup(), a(c).on("click", i, function(a) { a.preventDefault(), e.methods.start() }), a(c).on("click", j, function(a) { a.preventDefault(), e.methods.home() }), a(c).on("click", ".answers button", function(a) { a.preventDefault(), e.methods.answerQuestion(this) }), a(c).on("click", "#quiz-next-btn", function(a) { a.preventDefault(), e.methods.nextQuestion() }), a(c).on("click", "#quiz-finish-btn", function(a) { a.preventDefault(), e.methods.finish() }), a(c).on("click", "#quiz-restart-btn, #quiz-retry-btn", function(a) { a.preventDefault(), e.methods.restart() }) },
             setup: function() {
                 var b = "";
                 e.options.counter && (b += '<div id="quiz-counter"></div>'), b += '<div id="questions">', a.each(f, function(c, d) { b += '<div class="question-container">', b += '<p class="question">' + d.q + "</p>", b += '<ul class="answers">', a.each(d.options, function(a, c) { b += '<li><a href="#" data-index="' + a + '">' + c + "</a></li>" }), b += "</ul>", b += "</div>" }), b += "</div>", 0 === a(k).length && (b += '<div id="' + k.substr(1) + '">', b += '<p id="quiz-results"></p>', b += "</div>"), b += '<div id="quiz-controls">', b += '<p id="quiz-response"></p>', b += '<div id="quiz-buttons">', b += '<a href="#" id="quiz-next-btn">' + m + "</a>", b += '<a href="#" id="quiz-finish-btn">' + n + "</a>", b += '<a href="#" id="quiz-restart-btn">' + o + "</a>", b += "</div>", b += "</div>", e.$el.append(b).addClass("quiz-container quiz-start-state"), a("#quiz-counter").hide(), a(".question-container").hide(), a(l).hide(), a(k).hide(), a("#quiz-controls").hide()
@@ -50,7 +50,7 @@
                 a("#quiz-results").html(b), "function" == typeof e.options.finishCallback && e.options.finishCallback()
             },
             restart: function() { e.methods.reset(), e.$el.addClass("quiz-questions-state"), a("#questions").show(), a("#quiz-counter").show(), a(".question-container:first-child").show().addClass("active-question"), e.methods.updateCounter() },
-            reset: function() { r = !1, p = 1, q = 0, a(".answers a").removeClass("correct incorrect"), e.$el.removeClass().addClass("quiz-container"), a("#quiz-restart-btn").hide(), a(l).hide(), a(k).hide(), a("#quiz-controls").hide(), a("#quiz-response").show(), a("#quiz-next-btn").show(), a("#quiz-counter").hide(), a(".active-question").hide().removeClass("active-question") },
+            reset: function() { r = !1, p = 1, q = 0, a(".answers button").removeClass("correct incorrect"), e.$el.removeClass().addClass("quiz-container"), a("#quiz-restart-btn").hide(), a(l).hide(), a(k).hide(), a("#quiz-controls").hide(), a("#quiz-response").show(), a("#quiz-next-btn").show(), a("#quiz-counter").hide(), a(".active-question").hide().removeClass("active-question") },
             home: function() { e.methods.reset(), e.$el.addClass("quiz-start-state"), a(h).show(), "function" == typeof e.options.homeCallback && e.options.homeCallback() },
             updateCounter: function() {
                 var b = e.options.counterFormat.replace("%current", p).replace("%total", g);
@@ -59,5 +59,3 @@
         }, e.methods.init()
     }, a.quiz.defaultOptions = { allowIncorrect: !0, counter: !0, counterFormat: "%current/%total", startScreen: "#quiz-start-screen", startButton: "#quiz-start-btn", homeButton: "#quiz-home-btn", resultsScreen: "#quiz-results-screen", resultsFormat: "You got %score out of %total correct!", gameOverScreen: "#quiz-gameover-screen", nextButtonText: "Next", finishButtonText: "Finish", restartButtonText: "Restart" }, a.fn.quiz = function(b) { return this.each(function() { new a.quiz(this, b) }) }
 }(jQuery, window, document);
-
-
