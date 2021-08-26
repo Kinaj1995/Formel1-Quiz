@@ -49,7 +49,7 @@ def login():
         if user.password == pw:
             login_user(user)
 
-            return redirect(url_for('home'))
+            return redirect(url_for('home.index'))
         else:
             return render_template('exception.html')
     except:
@@ -61,10 +61,8 @@ def login():
 @login_required
 def api_logout():
     logout_user()
-    identity_changed.send(current_app._get_current_object(), identity=AnonymousIdentity())
-    resp = jsonify(success=True)
-    resp.delete_cookie('product_id')
-    return resp
+   
+    return redirect(url_for('home.index'))
 
 @bp.route('/auth/whoami')
 def api_whoami():
@@ -80,63 +78,6 @@ def api_whoami():
         })
     return jsonify({}), 401
 
-
-@bp.route('/auth/token')
-def api_token():
-    from flask_wtf.csrf import generate_csrf
-    return jsonify(token=generate_csrf())
-
-@bp.route("/auth/find", methods=('GET',))
-def auth_api_find():
-    query = request.values.get('q')
-    if not query:
-        return jsonify([])
-    ldap_result = User.query_ldap(query)
-    results = [{'name': r[0], 'email': r[1], 'first_name': r[2], 'last_name': r[3]} for r in ldap_result]
-    return jsonify(results)
-
-
-@bp.route("/auth/permissions/", methods=('PUT', 'GET'))
-def obj_permissions(obj, id):
-    object = None
-    obj_name = request.values.get('type', '')
-    obj_id = request.values.get('id', '')
-    try:
-        from app.common import models
-        obj_class = getattr(models, obj_name)
-        if obj_class:
-            object = obj_class.query.filter_by(id=int(obj_id)).one()
-    except Exception as e:
-        current_app.loggger.exception(e)
-        return jsonify(success=False)
-
-    if request.method == 'PUT':
-        try:
-            for item in request.json:
-                user = User.query.filter_by(name=item['user']).one()
-
-                ptype = 0
-                for m in item['permissions']:
-                    ptype |= ObjectPermissionType[m]
-
-                perm = ObjectPermission.query.filter_by(object=object, user=user).one_or_none()
-                if not perm:
-                    perm = ObjectPermission(user=user, object=object, ptype=ptype)
-                perm.ptype = ptype
-
-                if ptype:
-                    db.session.add(perm)
-                else:
-                    db.session.delete(perm)
-
-            db.session.commit()
-            success = True
-        except Exception as e:
-            db.session.rollback()
-            current_app.logger.exception(e)
-            success = False
-
-    return "a"
 
 @bp.route("/auth/register", methods=['GET', 'POST'])
 def register():
