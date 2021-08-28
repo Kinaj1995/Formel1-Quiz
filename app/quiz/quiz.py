@@ -48,11 +48,13 @@ def quiz_next():
     user.number_of_question += 1
     if res["Correct"]:
         diff_id = res['Diff_id']
-
+        print("b")
         diff = Difficulty.query.filter(Difficulty.id == diff_id).first()
         user.points += diff.points
         db.session.commit()   
     else: 
+        diff_id = res['Diff_id']
+        print("a")
         user.false_answers += 1
         db.session.commit()
     
