@@ -61,3 +61,45 @@ INSERT INTO public.question_answer(
 INSERT INTO public.question_answer(
 	question_id, answer_id)
 	VALUES (23, 23);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (102, 102);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (103, 103);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (114, 114);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (115, 115);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (116, 116);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (117, 117);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (119, 119);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (120, 120);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (121, 121);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (122, 122);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (127, 127);
+INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (201, 201);
+	INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (203, 203);
+	INSERT INTO public.question_answer(
+	question_id, answer_id)
+	VALUES (207, 207);
