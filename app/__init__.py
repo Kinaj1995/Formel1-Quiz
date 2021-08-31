@@ -29,9 +29,6 @@ app.register_blueprint(api_bp, url_prefix='/api')
 from .home import bp as home_bp
 app.register_blueprint(home_bp, url_prefix='/')
 
-from .test import bp as test_bp
-app.register_blueprint(test_bp, url_prefix='/test')
-
 from .quiz import bp as quiz_bp
 app.register_blueprint(quiz_bp, url_prefix='/quiz')
 

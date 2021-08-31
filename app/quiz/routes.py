@@ -29,7 +29,7 @@ def quiz_api_question(diff_id):
         encoded_img = base64.b64encode(img_bi)
         a = encoded_img.decode()
 
-        return render_template("quiz_proto.html",question=question, anwser=anwser, correct=anwser.correct, picture=a, diff=diff_id)  
+        return render_template("inner_quiz.html",question=question, anwser=anwser, correct=anwser.correct, picture=a, diff=diff_id)  
     else:
         return render_template('exception.html')
 
