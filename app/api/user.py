@@ -24,13 +24,13 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.functions import user
 from sqlalchemy_utils import generic_relationship
-from werkzeug.exceptions import Aborter
+from werkzeug.exceptions import Aborter, PreconditionRequired
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from app import db, login_manager
 from app.common.models import User
 from . import bp
-
+import re
 
 
 
@@ -42,7 +42,6 @@ def load_user(user_id):
 def login():
     try:
         username = request.form['user']
-        print(request.form)
         pw = request.form['password']
         user = User.find(username)
 
@@ -83,14 +82,30 @@ def api_whoami():
 def register():
     error = None
     if request.method == 'POST':
+        uname = str(request.form['username'])
+        regex_spec = re.compile('[@_!#$%^&*()<>?\|}{~:.,]')
+        regex_let = re.compile('[a-zA-Z]')
+        regex_num = re.compile('[0-9]')
+
+
+        if User.query.filter_by(username=uname).first() is not None:
+            return render_template("home.html", error="Username already taken")
+
+        if len(str(request.form['password'])) < 8 or regex_spec.search(str(request.form['password'])) == None or regex_let.search(str(request.form['password'])) == None or regex_num.search(str(request.form['password'])) == None:
+            return render_template("home.html", error="Password invalid")
+        
+        
+        if str(request.form['password']) != str(request.form['password1']):
+            return render_template("home.html", error="Password invalid")
+        
         user = User(str(request.form['username']), str(request.form['password']), str(request.form['email']), 0, 0, 0)
-        print(user.email)
+
         
         db.init_app(app)
         db.create_all()
 
         db.session.add(user)
         db.session.commit()
-        return render_template('home.html', error=error)
+        return render_template('home.html', error="")
     else:
-        return render_template('home.html', error=error)
+        return render_template('home.html', error="")
