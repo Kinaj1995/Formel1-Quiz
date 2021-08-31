@@ -107,6 +107,10 @@ body {
   font-size: small;
 }
 
+.card {
+  font-size: smaller;
+}
+
 @media (min-width: 48em) {
   .masthead-brand {
     float: left;
