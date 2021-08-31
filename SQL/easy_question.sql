@@ -1,9 +1,9 @@
 INSERT INTO public.questions(
 	id, difficultyid, question, picture)
-	VALUES (1, 1, 'In which year did Lewis Hamilton make his debut?', pg_read_binary_file('C:\Users\yanni\Downloads\q1.jpg')::bytea);	
+	VALUES (1, 1, 'In which year did Lewis Hamilton make his debut?', pg_read_binary_file('C:\Users\yanni\Pictures\f1-quiz\q1.jpg')::bytea);	
 INSERT INTO public.questions(
 	id, difficultyid, question, picture)
-	VALUES (2, 1, 'At which GP debuted Michael Schumacher?',  pg_read_binary_file('C:\Users\yanni\Downloads\q2.jpg')::bytea);
+	VALUES (2, 1, 'At which GP debuted Michael Schumacher?',  pg_read_binary_file('C:\Users\yanni\Pictures\f1-quiz\q2.jpg')::bytea);
 INSERT INTO public.questions(
 	id, difficultyid, question, picture)
 	VALUES (3, 1, 'How many Pole postions has Michael Schumacher?',  pg_read_binary_file('C:\Users\yanni\Pictures\f1-quiz\MSC.jpg')::bytea);
